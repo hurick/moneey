@@ -24,3 +24,29 @@ export const HeaderLogo = styled.div`
     font-size: 1.5rem;
   }
 `
+export const ButtonNewTransactions = styled.button`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+
+  background-color: ${props => props.theme["green-500"]};
+  border: 2px solid transparent;
+  border-radius: 6px;
+
+  padding: .75rem 2rem;
+
+  font-size: 1rem;
+  line-height: 1.6em;
+  font-weight: 700;
+  color: ${props => props.theme["gray-100"]};
+
+  transition-property: background-color;
+  transition-timing-function: ease-in-out;
+  transition-duration: .2s;
+
+  &:not(:disabled):hover {
+    background-color: ${props => props.theme["green-300"]};
+  }
+`

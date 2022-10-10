@@ -1,9 +1,11 @@
+import * as Dialog from '@radix-ui/react-dialog'
+
 import {
   HeaderContainer,
   HeaderContent,
-  HeaderLogo
+  HeaderLogo,
+  ButtonNewTransactions
 } from './styles'
-import { Button } from '../Button'
 
 import logoMoneey from '../../assets/logo.svg'
 
@@ -16,7 +18,26 @@ export const Header = () => {
           <h1 className='hl__name'>Moneey</h1>
         </HeaderLogo>
 
-        <Button title="New transaction">New transaction</Button>
+        <Dialog.Root>
+          <Dialog.Trigger asChild>
+            <ButtonNewTransactions
+              type="button"
+              title="New transaction"
+            >
+              New transaction
+            </ButtonNewTransactions>
+          </Dialog.Trigger>
+
+          <Dialog.Portal>
+            <Dialog.Overlay />
+
+            <Dialog.Content>
+              <Dialog.Title>New transaction</Dialog.Title>
+
+              <Dialog.Close />
+            </Dialog.Content>
+          </Dialog.Portal>
+        </Dialog.Root>
       </HeaderContent>
     </HeaderContainer>
   )

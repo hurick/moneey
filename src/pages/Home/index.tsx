@@ -1,3 +1,5 @@
+import { Summary } from './components/Summary'
+
 import {
   HomeContainer
 } from './styles'
@@ -5,7 +7,7 @@ import {
 export const Home = () => {
   return (
     <HomeContainer>
-      <h1>Home</h1>
+      <Summary />
     </HomeContainer>
   )
 }

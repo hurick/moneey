@@ -1,4 +1,5 @@
 import { Summary } from './components/Summary'
+import { TableTransactions } from './components/TableTransactions'
 
 import {
   HomeContainer
@@ -8,6 +9,7 @@ export const Home = () => {
   return (
     <HomeContainer>
       <Summary />
+      <TableTransactions />
     </HomeContainer>
   )
 }

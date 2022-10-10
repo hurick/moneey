@@ -1,8 +1,8 @@
-import { ReactNode } from 'react'
+import { ButtonHTMLAttributes, ReactNode } from 'react'
 
 import { ButtonContainer } from './styles'
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string
   children: ReactNode
   size?: 'default' | 'small' | 'medium' | 'large'
@@ -13,10 +13,16 @@ export const Button = ({
   children,
   className,
   size = 'default',
-  isOutlined = false
+  isOutlined = false,
+  ...rest
 }: ButtonProps) => {
   return (
-    <ButtonContainer isOutlined={isOutlined} size={size} className={className}>
+    <ButtonContainer
+      {...rest}
+      size={size}
+      className={className}
+      isOutlined={isOutlined}
+    >
       { children }
     </ButtonContainer>
   )

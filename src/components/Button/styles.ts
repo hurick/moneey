@@ -9,7 +9,7 @@ const buttonSizes = {
   small: ".5rem 1rem",
   medium: ".75rem 1.25rem",
   large: "1rem 2rem",
-  default: ".875rem 2rem"
+  default: ".75rem 2rem"
 } as const
 
 export const ButtonContainer = styled.button<ButtonContainerProps>`

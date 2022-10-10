@@ -6,5 +6,5 @@ export const HomeContainer = styled.main`
 
   width: 100%;
   max-width: 70rem;
-  margin: 0 auto 0;
+  margin: -4rem auto 0;
 `

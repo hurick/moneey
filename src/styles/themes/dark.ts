@@ -18,4 +18,4 @@ export const darkTheme = {
   'red-300': '#f75A68',
   'red-500': '#ab222e',
   'red-700': '#7a1921',
-}
+} as const

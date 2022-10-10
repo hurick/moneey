@@ -1,1 +1,1 @@
-export const lightTheme = {}
+export const lightTheme = {} as const

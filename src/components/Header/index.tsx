@@ -16,7 +16,7 @@ export const Header = () => {
           <h1 className='hl__name'>Moneey</h1>
         </HeaderLogo>
 
-        <Button>New transaction</Button>
+        <Button title="New transaction">New transaction</Button>
       </HeaderContent>
     </HeaderContainer>
   )

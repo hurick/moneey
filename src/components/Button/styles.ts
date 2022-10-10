@@ -17,6 +17,7 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: .5rem;
 
   background-color: ${props => !props.isOutlined ? props.theme["green-500"] : 'transparent'};
   border: 2px solid ${props => !props.isOutlined ? `transparent` : `${props.theme["green-300"]}`};

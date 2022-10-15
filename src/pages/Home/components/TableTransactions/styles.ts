@@ -32,7 +32,7 @@ export const TransactionItem = styled.tr`
 `
 
 interface TransactionAmountHighlightProps {
-  variant: 'income' | 'expenses'
+  variant: 'income' | 'expense'
 }
 
 export const TransactionAmountHighlight = styled.span<TransactionAmountHighlightProps>`

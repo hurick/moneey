@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
+import { TransactionsContext } from '../../../../contexts/Transactions'
 
 import { Loader } from '../../../../components/Loader'
 
@@ -9,33 +10,12 @@ import {
   TransactionAmountHighlight
 } from './styles'
 
-interface Transaction {
-  id: number
-  description: string
-  type: "income" | "expense"
-  category: string
-  amountValue: number
-  createadAt: string
-}
-
 export const TableTransactions = () => {
-  const [transactions, setTransactions] = useState<Transaction[]>([])
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-
-  useEffect(() => {
-    setIsLoading(true)
-
-    fetch(`${import.meta.env.VITE_API_URL}/transactions`)
-      .then(response => response.json())
-      .then(data => {
-        setTransactions(data)
-        setIsLoading(false)
-      })
-  }, [])
+  const { transactions, isLoadingTransactions } = useContext(TransactionsContext)
 
   return (
     <TransactionsContainer>
-      {isLoading && <Loader size={32} />}
+      {isLoadingTransactions && <Loader size={32} />}
 
       <TransactionsTable>
         <tbody>

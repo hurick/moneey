@@ -74,6 +74,7 @@ export const FormTransaction = styled.form`
 
   .ft__create {
     margin-top: 1.5rem;
+    min-height: 4rem;
   }
 `
 export const TransactionTypes = styled(RadioGroup.Root)`

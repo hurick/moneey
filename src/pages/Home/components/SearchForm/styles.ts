@@ -31,6 +31,6 @@ export const SearchFormContainer = styled.form`
   }
 
   .sfc__send {
-    min-width: 147px;
+    min-width: 9.5rem;
   }
 `

@@ -22,7 +22,6 @@ export const SearchForm = () => {
 
   const handleSearchTransactions = async (data: SearchFormInputs) => {
     await new Promise(resolve => setTimeout(resolve, 2000))
-
     console.log(data)
   }
 

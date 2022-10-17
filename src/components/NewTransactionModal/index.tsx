@@ -1,7 +1,12 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Controller, useForm } from 'react-hook-form'
+
+import { newTransactionModalSchema, NewTransactionModalInputs } from './validator'
 
 import { Button } from '../Button'
+import { Loader } from '../Loader'
 
 import {
   Overlay,
@@ -19,6 +24,25 @@ interface NewTransactionModalProps {
 }
 
 export const NewTransactionModal = ({ title, isClosable = false }: NewTransactionModalProps) => {
+  const {
+    register,
+    control,
+    handleSubmit,
+    reset,
+    formState: { isSubmitting }
+  } = useForm<NewTransactionModalInputs>({
+    resolver: zodResolver(newTransactionModalSchema),
+    defaultValues: {
+      type: 'income'
+    }
+  })
+
+  const handleCreateNewTransaction = async (data: NewTransactionModalInputs) => {
+    await new Promise(resolve => setTimeout(resolve, 2000))
+    console.log(data)
+    reset()
+  }
+
   return (
     <Dialog.Portal>
       <Overlay />
@@ -32,30 +56,57 @@ export const NewTransactionModal = ({ title, isClosable = false }: NewTransactio
           </Close>
         )}
 
-        <FormTransaction>
-          <input className="ft__input" type="text" placeholder="Description" />
-          <input className="ft__input" type="text" placeholder="Price" />
-          <input className="ft__input" type="text" placeholder="Category" />
+        <FormTransaction onSubmit={handleSubmit(handleCreateNewTransaction)}>
+          <input
+            required
+            className="ft__input"
+            type="text"
+            placeholder="Description"
+            {...register('description')}
+          />
 
-          <TransactionTypes>
-            <TransactionTypeButton defaultChecked variant="income" title="Income" value="income">
-              <ArrowCircleUp className="ttb__icon" size={24} />
-              <span>Income</span>
-            </TransactionTypeButton>
+          <input
+            required
+            className="ft__input"
+            type="number"
+            placeholder="Price"
+            {...register('price', { valueAsNumber: true })}
+          />
 
-            <TransactionTypeButton variant="expense" title="Expense" value="expense">
-              <ArrowCircleDown className="ttb__icon" size={24} />
-              <span>Expense</span>
-            </TransactionTypeButton>
-          </TransactionTypes>
+          <input
+            required
+            className="ft__input"
+            type="text"
+            placeholder="Category"
+            {...register('category')}
+          />
+
+          <Controller
+            name="type"
+            control={control}
+            render={({ field }) => (
+              <TransactionTypes onValueChange={field.onChange} value={field.value}>
+                <TransactionTypeButton defaultChecked variant="income" title="Income" value="income">
+                  <ArrowCircleUp className="ttb__icon" size={24} />
+                  <span>Income</span>
+                </TransactionTypeButton>
+
+                <TransactionTypeButton variant="expense" title="Expense" value="expense">
+                  <ArrowCircleDown className="ttb__icon" size={24} />
+                  <span>Expense</span>
+                </TransactionTypeButton>
+              </TransactionTypes>
+            )}
+          />
 
           <Button
             size="large"
             type="submit"
             className="ft__create"
             title="Create new transaction"
+            disabled={isSubmitting}
           >
-            Create
+            {isSubmitting ? <Loader /> : 'Create'}
           </Button>
         </FormTransaction>
 

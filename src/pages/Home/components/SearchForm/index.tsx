@@ -8,14 +8,22 @@ import { MagnifyingGlass } from 'phosphor-react'
 import { Button } from '../../../../components/Button'
 
 import { SearchFormContainer } from './styles'
+import { Loader } from '../../../../components/Loader'
 
 export const SearchForm = () => {
-  const { register, handleSubmit, watch } = useForm<SearchFormInputs>({
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { isSubmitting }
+  } = useForm<SearchFormInputs>({
     resolver: zodResolver(searchFormSchema)
   })
 
-  const handleSearchTransactions = (data: SearchFormInputs) => {
-    console.log('data', data)
+  const handleSearchTransactions = async (data: SearchFormInputs) => {
+    await new Promise(resolve => setTimeout(resolve, 2000))
+
+    console.log(data)
   }
 
   const isFormQueryFilled = !watch('query')
@@ -33,9 +41,10 @@ export const SearchForm = () => {
         isOutlined
         type="submit"
         title="Search for transactions"
-        disabled={isFormQueryFilled}
+        disabled={isSubmitting || isFormQueryFilled}
+        className="sfc__send"
       >
-        <MagnifyingGlass size={20} />
+        {isSubmitting ? <Loader color="#00b37e" size={20} /> : <MagnifyingGlass size={20} /> }
         <span>Search</span>
       </Button>
     </SearchFormContainer>

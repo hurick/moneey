@@ -29,4 +29,8 @@ export const SearchFormContainer = styled.form`
       border-color: ${props => props.theme["green-500"]};
     }
   }
+
+  .sfc__send {
+    min-width: 147px;
+  }
 `

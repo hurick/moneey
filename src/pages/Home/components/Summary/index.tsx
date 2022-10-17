@@ -42,7 +42,7 @@ export const Summary = () => {
           <ArrowCircleUp size={32} />
         </SummaryCardHeader>
 
-        <CountUp end={summary.income} duration={0.5} prefix="$ " separator="," decimals={2} decimal={'.'}>
+        <CountUp end={summary.income} duration={0.5} prefix="$" separator="," decimals={2} decimal={'.'}>
           {({ countUpRef }) => <SummaryValueAmount ref={countUpRef} isLoading={isLoadingTransactions} />}
         </CountUp>
       </SummaryCard>
@@ -53,7 +53,7 @@ export const Summary = () => {
           <ArrowCircleDown size={32} />
         </SummaryCardHeader>
 
-        <CountUp end={summary.expenses} duration={0.5} prefix="$ " separator="," decimals={2} decimal={'.'}>
+        <CountUp end={summary.expenses} duration={0.5} prefix="$" separator="," decimals={2} decimal={'.'}>
           {({ countUpRef }) => <SummaryValueAmount ref={countUpRef} isLoading={isLoadingTransactions} />}
         </CountUp>
       </SummaryCard>
@@ -64,7 +64,7 @@ export const Summary = () => {
           <CurrencyDollar size={32} />
         </SummaryCardHeader>
 
-        <CountUp end={summary.total} duration={0.5} prefix=" $ " separator="," decimals={2} decimal={'.'}>
+        <CountUp end={summary.total} duration={0.5} prefix=" $" separator="," decimals={2} decimal={'.'}>
           {({ countUpRef }) => <SummaryValueAmount ref={countUpRef} isLoading={isLoadingTransactions} />}
         </CountUp>
       </SummaryCard>

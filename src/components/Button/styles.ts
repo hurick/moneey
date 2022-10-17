@@ -38,4 +38,9 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
     background-color: ${props => props.theme["green-300"]};
     color: ${props => props.theme["gray-100"]};
   }
+
+  &:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+  }
 `

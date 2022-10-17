@@ -8,21 +8,29 @@ export const TransactionsProvider = ({ children }: TransactionsProviderProps) =>
   const [transactions, setTransactions] = useState<Transaction[]>([])
   const [isLoadingTransactions, setIsLoadingTransactions] = useState<boolean>(false)
 
-  useEffect(() => {
+  const fetchTransactions = async (query?: string) => {
     setIsLoadingTransactions(true)
 
-    fetch(`${import.meta.env.VITE_API_URL}/transactions`)
+    const url = new URL(`${import.meta.env.VITE_API_URL}/transactions`)
+    query && url.searchParams.append('q', query)
+
+    await fetch(url)
       .then(response => response.json())
       .then(data => {
         setTransactions(data)
         setIsLoadingTransactions(false)
       })
+  }
+
+  useEffect(() => {
+    fetchTransactions()
   }, [])
 
   return (
     <TransactionsContext.Provider value={{
       transactions,
-      isLoadingTransactions
+      isLoadingTransactions,
+      fetchTransactions
     }}
     >
       { children }

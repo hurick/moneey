@@ -24,9 +24,10 @@ import {
 interface NewTransactionModalProps {
   title?: string
   isClosable?: boolean
+  handleModalVisibility: (status: boolean) => void
 }
 
-export const NewTransactionModal = ({ title, isClosable = false }: NewTransactionModalProps) => {
+export const NewTransactionModal = ({ title, isClosable = false, handleModalVisibility }: NewTransactionModalProps) => {
   const { createTransaction } = useContext(TransactionsContext)
 
   const {
@@ -52,6 +53,7 @@ export const NewTransactionModal = ({ title, isClosable = false }: NewTransactio
       type
     })
 
+    handleModalVisibility(false)
     reset()
   }
 

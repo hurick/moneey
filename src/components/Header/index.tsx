@@ -1,4 +1,5 @@
 import * as Dialog from '@radix-ui/react-dialog'
+import { useState } from 'react'
 
 import logoMoneey from '../../assets/logo.svg'
 
@@ -12,6 +13,12 @@ import {
 } from './styles'
 
 export const Header = () => {
+  const [open, setOpen] = useState<boolean>()
+
+  const handleModalVisibility = (status: boolean) => {
+    setOpen(status)
+  }
+
   return (
     <HeaderContainer>
       <HeaderContent>
@@ -20,7 +27,7 @@ export const Header = () => {
           <h1 className='hl__name'>Moneey</h1>
         </HeaderLogo>
 
-        <Dialog.Root>
+        <Dialog.Root open={open} onOpenChange={setOpen}>
           <Dialog.Trigger asChild>
             <ButtonNewTransactions
               type="button"
@@ -33,6 +40,7 @@ export const Header = () => {
           <NewTransactionModal
             isClosable
             title="New Transaction"
+            handleModalVisibility={handleModalVisibility}
           />
         </Dialog.Root>
       </HeaderContent>

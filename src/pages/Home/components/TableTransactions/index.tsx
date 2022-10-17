@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { TransactionsContext } from '../../../../contexts/Transactions'
 
-import { currencyFormat, dateFormat } from '../../../../utils'
+import { currencyFormat, dateFormat, fullDateFormat } from '../../../../utils'
 
 import { Loader } from '../../../../components/Loader'
 
@@ -24,14 +24,19 @@ export const TableTransactions = () => {
           {transactions.map(transaction => (
             <TransactionItem key={transaction.id}>
               <td>{transaction.description}</td>
+
               <td>
                 <TransactionAmountHighlight variant={transaction.type}>
                   {transaction.type === 'expense' && '- '}
                   {currencyFormat.format(transaction.amountValue)}
                 </TransactionAmountHighlight>
               </td>
+
               <td>{transaction.category}</td>
-              <td>{dateFormat.format(new Date(transaction.createadAt))}</td>
+
+              <td title={fullDateFormat.format(new Date(transaction.createadAt))}>
+                {dateFormat.format(new Date(transaction.createadAt))}
+              </td>
             </TransactionItem>
           ))}
         </tbody>

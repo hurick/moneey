@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useCallback, useEffect, useState } from 'react'
 
 import { api } from '../../lib/axios'
 
@@ -10,7 +10,7 @@ export const TransactionsProvider = ({ children }: TransactionsProviderProps) =>
   const [transactions, setTransactions] = useState<Transaction[]>([])
   const [isLoadingTransactions, setIsLoadingTransactions] = useState<boolean>(false)
 
-  const fetchTransactions = async (query?: string) => {
+  const fetchTransactions = useCallback(async (query?: string) => {
     setIsLoadingTransactions(true)
 
     const response = await api.get('/transactions', {
@@ -23,9 +23,9 @@ export const TransactionsProvider = ({ children }: TransactionsProviderProps) =>
 
     setTransactions(response.data)
     setIsLoadingTransactions(false)
-  }
+  }, [])
 
-  const createTransaction = async (data: CreateTransactionInputs) => {
+  const createTransaction = useCallback(async (data: CreateTransactionInputs) => {
     const { description, amountValue, category, type } = data
 
     const response = await api.post('/transactions', {
@@ -37,11 +37,11 @@ export const TransactionsProvider = ({ children }: TransactionsProviderProps) =>
     })
 
     setTransactions(state => [response.data, ...state])
-  }
+  }, [])
 
   useEffect(() => {
     fetchTransactions()
-  }, [])
+  }, [fetchTransactions])
 
   return (
     <TransactionsContext.Provider value={{

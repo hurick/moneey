@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from 'react'
+import { api } from '../../lib/axios'
 
 import { Transaction, TransactionsContextType, TransactionsProviderProps } from './Transactions'
 
@@ -11,15 +12,12 @@ export const TransactionsProvider = ({ children }: TransactionsProviderProps) =>
   const fetchTransactions = async (query?: string) => {
     setIsLoadingTransactions(true)
 
-    const url = new URL(`${import.meta.env.VITE_API_URL}/transactions`)
-    query && url.searchParams.append('q', query)
+    const response = await api.get('/transactions', {
+      params: { q: query }
+    })
 
-    await fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        setTransactions(data)
-        setIsLoadingTransactions(false)
-      })
+    setTransactions(response.data)
+    setIsLoadingTransactions(false)
   }
 
   useEffect(() => {

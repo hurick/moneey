@@ -34,8 +34,8 @@ export const TableTransactions = () => {
 
                 <td>{transaction.category}</td>
 
-                <td title={fullDateFormat.format(new Date(transaction.createadAt))}>
-                  {dateFormat.format(new Date(transaction.createadAt))}
+                <td title={fullDateFormat.format(new Date(transaction.createdAt))}>
+                  {dateFormat.format(new Date(transaction.createdAt))}
                 </td>
               </TransactionItem>
             ))}

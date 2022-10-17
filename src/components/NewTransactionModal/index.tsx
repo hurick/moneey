@@ -1,3 +1,6 @@
+import { useContext } from 'react'
+import { TransactionsContext } from '../../contexts/Transactions'
+
 import * as Dialog from '@radix-ui/react-dialog'
 import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -24,6 +27,8 @@ interface NewTransactionModalProps {
 }
 
 export const NewTransactionModal = ({ title, isClosable = false }: NewTransactionModalProps) => {
+  const { createTransaction } = useContext(TransactionsContext)
+
   const {
     register,
     control,
@@ -38,8 +43,15 @@ export const NewTransactionModal = ({ title, isClosable = false }: NewTransactio
   })
 
   const handleCreateNewTransaction = async (data: NewTransactionModalInputs) => {
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    console.log(data)
+    const { description, amountValue, category, type } = data;
+
+    await createTransaction({
+      description,
+      amountValue,
+      category,
+      type
+    })
+
     reset()
   }
 
@@ -70,7 +82,7 @@ export const NewTransactionModal = ({ title, isClosable = false }: NewTransactio
             className="ft__input"
             type="number"
             placeholder="Price"
-            {...register('price', { valueAsNumber: true })}
+            {...register('amountValue', { valueAsNumber: true })}
           />
 
           <input

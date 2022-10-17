@@ -1,6 +1,8 @@
 import { useContext } from 'react'
 import { TransactionsContext } from '../../../../contexts/Transactions'
 
+import { useSummary } from '../../../../hooks/useSummary'
+
 import { ArrowCircleDown, ArrowCircleUp, CurrencyDollar } from 'phosphor-react'
 import CountUp from 'react-countup'
 
@@ -12,25 +14,8 @@ import {
 } from './styles'
 
 export const Summary = () => {
-  const { transactions, isLoadingTransactions } = useContext(TransactionsContext)
-
-  const summary = transactions.reduce((acc, transaction) => {
-    if (transaction.type === 'income') {
-      acc.income += transaction.amountValue
-      acc.total += transaction.amountValue
-    }
-
-    if (transaction.type === 'expense') {
-      acc.expenses += transaction.amountValue
-      acc.total -= transaction.amountValue
-    }
-
-    return acc
-  }, {
-    income: 0,
-    expenses: 0,
-    total: 0
-  })
+  const { isLoadingTransactions } = useContext(TransactionsContext)
+  const summary = useSummary()
 
   const totalVariant = summary.total < 0 ? 'red' : 'green'
 

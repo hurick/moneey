@@ -26,7 +26,7 @@ export const TransactionsProvider = ({ children }: TransactionsProviderProps) =>
   }
 
   const createTransaction = async (data: CreateTransactionInputs) => {
-    const { description, amountValue, category, type } = data;
+    const { description, amountValue, category, type } = data
 
     const response = await api.post('/transactions', {
       description,

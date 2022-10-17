@@ -43,7 +43,7 @@ export const NewTransactionModal = ({ title, isClosable = false }: NewTransactio
   })
 
   const handleCreateNewTransaction = async (data: NewTransactionModalInputs) => {
-    const { description, amountValue, category, type } = data;
+    const { description, amountValue, category, type } = data
 
     await createTransaction({
       description,

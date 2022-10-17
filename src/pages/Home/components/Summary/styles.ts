@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const SummaryContainer = styled.section`
   display: grid;
@@ -7,7 +7,7 @@ export const SummaryContainer = styled.section`
 `
 
 interface SummaryCardProps {
-  variant?: "green" | "red"
+  variant?: 'green' | 'red'
 }
 
 export const SummaryCard = styled.div<SummaryCardProps>`
@@ -18,14 +18,14 @@ export const SummaryCard = styled.div<SummaryCardProps>`
   height: 8rem;
   padding: 1.5rem 2rem;
   background-color: ${props => props.variant === 'red'
-    ? props.theme["red-500"]
+    ? props.theme['red-500']
     : props.variant === 'green'
-      ? props.theme["green-500"]
-      : props.theme["gray-600"]
-  };
+      ? props.theme['green-500']
+      : props.theme['gray-600']
+};
   border-radius: 6px;
 
-  color: ${props => props.theme["gray-100"]};
+  color: ${props => props.theme['gray-100']};
   line-height: 1.6em;
 `
 
@@ -34,8 +34,8 @@ interface SummaryCardHeaderProps {
 }
 
 const summaryCardHeaderColors = {
-  green: "green-300",
-  red: "red-300",
+  green: 'green-300',
+  red: 'red-300',
 } as const
 
 export const SummaryCardHeader = styled.div<SummaryCardHeaderProps>`
@@ -47,11 +47,11 @@ export const SummaryCardHeader = styled.div<SummaryCardHeaderProps>`
 
   color: ${props => props.iconColor
     ? props.theme[summaryCardHeaderColors[props.iconColor]]
-    : props.theme["gray-100"]
-  };
+    : props.theme['gray-100']
+};
 
   .sch__title {
-    color: ${props => props.theme["gray-300"]};
+    color: ${props => props.theme['gray-300']};
   }
 `
 

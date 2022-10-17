@@ -86,7 +86,7 @@ export const TransactionTypes = styled(RadioGroup.Root)`
 `
 
 interface TransactionTypeButtonProps {
-  variant: "income" | "expense"
+  variant: 'income' | 'expense'
 }
 
 export const TransactionTypeButton = styled(RadioGroup.Item)<TransactionTypeButtonProps>`

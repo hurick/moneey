@@ -19,7 +19,6 @@ export const SearchForm = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { isSubmitting }
   } = useForm<SearchFormInputs>({
     resolver: zodResolver(searchFormSchema)

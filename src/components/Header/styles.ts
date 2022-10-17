@@ -1,7 +1,7 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
-  background-color: ${props => props.theme["gray-900"]};
+  background-color: ${props => props.theme['gray-900']};
   padding: 2.5rem 1rem 8rem;
 `
 
@@ -31,7 +31,7 @@ export const ButtonNewTransactions = styled.button`
   align-items: center;
   gap: .5rem;
 
-  background-color: ${props => props.theme["green-500"]};
+  background-color: ${props => props.theme['green-500']};
   border: 2px solid transparent;
   border-radius: 6px;
 
@@ -40,13 +40,13 @@ export const ButtonNewTransactions = styled.button`
   font-size: 1rem;
   line-height: 1.6em;
   font-weight: 700;
-  color: ${props => props.theme["gray-100"]};
+  color: ${props => props.theme['gray-100']};
 
   transition-property: background-color;
   transition-timing-function: ease-in-out;
   transition-duration: .2s;
 
   &:not(:disabled):hover {
-    background-color: ${props => props.theme["green-300"]};
+    background-color: ${props => props.theme['green-300']};
   }
 `

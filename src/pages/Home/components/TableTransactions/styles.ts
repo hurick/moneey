@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const TransactionsContainer = styled.section`
   margin-top: 1.5rem;
@@ -12,7 +12,7 @@ export const TransactionsTable = styled.table`
 `
 
 export const TransactionItem = styled.tr`
-  background-color: ${props => props.theme["gray-700"]};
+  background-color: ${props => props.theme['gray-700']};
 
   td {
     padding: 1.25rem 2rem;
@@ -37,7 +37,7 @@ interface TransactionAmountHighlightProps {
 
 export const TransactionAmountHighlight = styled.span<TransactionAmountHighlightProps>`
   color: ${props => props.variant === 'income'
-    ? props.theme["green-300"]
-    : props.theme["red-300"]
-  };
+    ? props.theme['green-300']
+    : props.theme['red-300']
+};
 `

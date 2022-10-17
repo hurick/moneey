@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const SearchFormContainer = styled.form`
   display: flex;
@@ -11,22 +11,22 @@ export const SearchFormContainer = styled.form`
     width: 100%;
     padding: 1rem;
 
-    background-color: ${props => props.theme["gray-900"]};
+    background-color: ${props => props.theme['gray-900']};
     border: 1px solid transparent;
     border-radius: 6px;
 
-    color: ${props => props.theme["gray-100"]};
+    color: ${props => props.theme['gray-100']};
 
     transition-property: border-color;
     transition-timing-function: ease-in-out;
     transition-duration: .2s;
 
     &::placeholder {
-      color: ${props => props.theme["gray-500"]};
+      color: ${props => props.theme['gray-500']};
     }
 
     &:focus {
-      border-color: ${props => props.theme["green-500"]};
+      border-color: ${props => props.theme['green-500']};
     }
   }
 

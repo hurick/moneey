@@ -1,9 +1,9 @@
-import { ReactNode } from "react"
+import { ReactNode } from 'react'
 
 export interface Transaction {
   id: number
   description: string
-  type: "income" | "expense"
+  type: 'income' | 'expense'
   category: string
   amountValue: number
   createdAt: string
